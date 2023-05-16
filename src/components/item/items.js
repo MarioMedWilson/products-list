@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Items = (props) => {
-    const {items, del} = props;
+    const {items, del, handleIncrease, handleDecrease} = props;
     let length = items.length
     const ListItem = length ? (
         items.map(item => {
@@ -9,6 +9,15 @@ const Items = (props) => {
                 <div key={item.id} className="item">
                     <p>{item.product}</p>
                     <p>{item.price}</p>
+                    <p className='quantity'>
+                        <div onClick={() => handleIncrease(item.id)}>
+                            +
+                        </div>
+                        {item.quantity}
+                        <div onClick={() => handleDecrease(item.id)}>
+                            -
+                        </div>
+                    </p>
                     <p className="delete" onClick={() => del(item.id)}>&times;</p>
                 </div>
             )
